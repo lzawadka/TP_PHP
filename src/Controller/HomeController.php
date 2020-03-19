@@ -20,32 +20,32 @@ class HomeController extends AbstractController
         if($_GET != []){
             $city= $_GET["city"];
             $postalCode= $_GET["postal_code"];
-            $citys = $geoAPi->getCommunes($city,$postalCode);
-            foreach ($citys as $city) {
-                $etablissements = $etablissementPublicApi->getEtablissement($city['code'], $_GET["type"]);
+            $communes = $geoAPi->getCommunes($city,$postalCode);
+            foreach ($communes as $commune) {
+                $etablissements = $etablissementPublicApi->getEtablissement($commune['code'], $_GET["type"]);
                 if($etablissements != null){
-                    $city["etablissement"] = $etablissements;
+                    $commune["etablissement"] = $etablissements;
                 }
-                array_push($returnCity,$city);
+                array_push($returnCommune,$commune);
             }
-            if(array_key_exists("error", $citys)){
-                $error = $citys["error"];
+            if(array_key_exists("error", $communes)){
+                $error = $communes["error"];
             }
             else if(array_key_exists("error", $etablissements)){
                 $error = $etablissements["error"];
             }
-            else if($citys == []){
-                $error = "Aucune ville trouvé.";
+            else if($communes == []){
+                $error = "Aucune ville n'a été trouvé.";
             }
             return $this->render('base.html.twig', [
-                'citys' => $returnCity,
+                'citys' => $returnCommune,
                 'error' => $error,
                 'ville' => $_GET["city"],
                 'codePostal' => $_GET["postal_code"],
             ]);
         }
         return $this->render('base.html.twig', [
-            'citys' => $returnCity,
+            'citys' => $returnCommune,
             'ville' => "",
             'codePostal' => "",
             'error' => $error,

@@ -7,7 +7,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class EtablissementPublicApi {
   
-  function getEtablissement($postalCode, $type): array 
+  public function getEtablissement($postalCode, $type): array 
   {
     $httpClient = HttpClient::create();
     $response = $httpClient->request('GET', 'https://etablissements-publics.api.gouv.fr/v3/communes/' . $postalCode . "/" . $type);
@@ -18,7 +18,8 @@ class EtablissementPublicApi {
       echo strval('Error: Status Code: ' . $response->getStatusCode());
     } else {
       $content = $response->getContent();
-      return jspn_decode($responseApi);
+      $responseApi = JsonResponse::fromJsonString($content);
+      return $responseApi;
     }
   }
 }
