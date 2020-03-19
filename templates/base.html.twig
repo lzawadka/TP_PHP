@@ -175,12 +175,15 @@
 		<p>{{ error }}</p>
 		{% for city in citys %}
 			<ul>
-				<li>{{ city['nom'] }}
-					dans le
-					{{ city['codesPostaux'][0] }}</li>
-				<p>Population:
+				<li>
+					<p>{{ city['nom'] }}
+						dans le
+						{{ city['codesPostaux'][0] }}</p>
+				</li>
+
+				<p>Nombre d'habitants:
 					{{ city['population'] }}</p>
-				<p>Établissement:</p>
+				<p>Établissement publique:</p>
 				{% for etablissement in city['etablissement']['features'] %}
 					{% if etablissement != [] %}
 						<ul>
@@ -213,3 +216,38 @@
 		{% endfor %}
 	</body>
 </html>
+
+<style type="text/css">
+	body {
+		margin: 0;
+		padding: 20px;
+		background: #F2F2F2;
+		width: 100vw;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
+	main {
+		margin: 10px 10%;
+		background: white;
+		padding: 20px;
+	}
+	p {
+		font-size: 18px;
+	}
+
+	div {
+		height: 5vh;
+	}
+
+	li {
+		text-decoration: none;
+		list-style-type: none;
+	}
+
+	ul {
+		list-style-type: none;
+		padding: 0;
+	}
+</style>
