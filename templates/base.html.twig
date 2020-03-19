@@ -181,9 +181,9 @@
 						{{ city['codesPostaux'][0] }}</p>
 				</li>
 
-				<p>Nombre d'habitants:
+				<p>Nombre d'habitants :
 					{{ city['population'] }}</p>
-				<p>Établissement publique:</p>
+				<p>Établissement publique :</p>
 				{% for etablissement in city['etablissement']['features'] %}
 					{% if etablissement != [] %}
 						<ul>
@@ -193,14 +193,6 @@
 								<li>adresse:
 									{{ etablissement["properties"]["adresses"][0]["lignes"][0] }},{{ etablissement["properties"]["adresses"][0]["codePostal"] }}
 									{{ etablissement["properties"]["adresses"][0]["commune"] }}</li>
-							{% endif %}
-							{% if etablissement["properties"]["telephone"] is defined %}
-								<li>telephone:
-									{{ etablissement["properties"]["telephone"] }}</li>
-							{% endif %}
-							{% if etablissement["properties"]["email"] is defined %}
-								<li>Mail:
-									{{ etablissement["properties"]["email"] }}</li>
 							{% endif %}
 							{% if etablissement["properties"]["url"] is defined %}
 								<li>Site:
