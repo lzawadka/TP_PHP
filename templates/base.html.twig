@@ -3,24 +3,24 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>
-			{% block title %}Welcome!
+			{% block title %}Recherche d'établissements
 			{% endblock %}
 		</title>
 	</head>
 	<body>
 		<form action="/" method="get">
 			<div>
-				<label for="city">Entrez un nom de ville:
+				<label for="city">Ville:
 				</label>
 				<input type="text" name="city" id="city" value="{{ ville }}">
 			</div>
 			<div>
-				<label for="postal_code">Entrez un code postal:
+				<label for="postal_code">Code postal:
 				</label>
 				<input type="text" name="postal_code" id="postal_code" value="{{ codePostal }}">
 			</div>
 			<div>
-				<label for="type">Entrez un type d'etablissement:
+				<label for="type">Type d'établissement:
 				</label>
 				<select name="type">
 					<option value="accompagnement_personnes_agees">accompagnement_personnes_agees</option>
@@ -180,7 +180,7 @@
 					{{ city['codesPostaux'][0] }}</li>
 				<p>Population:
 					{{ city['population'] }}</p>
-				<p>Etablissement:</p>
+				<p>Établissement:</p>
 				{% for etablissement in city['etablissement']['features'] %}
 					{% if etablissement != [] %}
 						<ul>
@@ -206,7 +206,7 @@
 							{% endif %}
 						</ul>
 					{% else %}
-						<p>Aucun etablissement trouvé.</p>
+						<p>Aucun établissements n'a été trouvé.</p>
 					{%  endif %}
 				{% endfor %}
 			</ul>
