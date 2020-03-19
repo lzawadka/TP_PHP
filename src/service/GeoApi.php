@@ -10,10 +10,7 @@ class GeoApi {
   public function getCommunes($postalCode, $commune) : array
   {
     $httpClient = HttpClient::create();
-    if($postalCode && $commune) {
-        $response = $httpClient->request('GET', "https://geo.api.gouv.fr/communes?codePostal=".$postalCode."&nom=".$commune ."&fields=nom,code,codesPostaux,codeDepartement,codeRegion,population&format=json&geometry=centre");
-    }
-      
+    $response = $httpClient->request('GET', "https://geo.api.gouv.fr/communes?codePostal=" . $postalCode . "&nom=" . $commune . "&fields=nom,code,codesPostaux,codeDepartement,codeRegion,population&format=json&geometry=centre");
 
     // Check HTTP response
     if (200 !== $response->getStatusCode()) {
@@ -21,7 +18,7 @@ class GeoApi {
       echo strval('Error: Status Code: ' . $response->getStatusCode());
     } else {
       $content = $response->getContent();
-      return json_decode($content);
+      return json_decode($content, true);
     }
   }
 }
