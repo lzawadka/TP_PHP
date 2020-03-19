@@ -7,11 +7,11 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class GeoApi {
   
-  public function getCommunes($postalCode, $commune) : array 
+  public function getCommunes($postalCode, $commune) : array
   {
     $httpClient = HttpClient::create();
     if($postalCode && $commune) {
-        $response = $httpClient->request('GET', "https://geo.api.gouv.fr/communes?codePostal=" . $postalCode . "&nom=" . $commune . "&fields=nom,code,codesPostaux,codeDepartement,codeRegion,population&format=json&geometry=centre");
+        $response = $httpClient->request('GET', "https://geo.api.gouv.fr/communes?codePostal=".$postalCode."&nom=".$commune ."&fields=nom,code,codesPostaux,codeDepartement,codeRegion,population&format=json&geometry=centre");
     }
       
 
