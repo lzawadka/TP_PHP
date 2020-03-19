@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Welcome!
+			{% endblock %}
+		</title>
+	</head>
+	<body>
+		<form action="/" method="get">
+			<div>
+				<label for="city">Entrez un nom de ville:
+				</label>
+				<input type="text" name="city" id="city" value="{{ ville }}">
+			</div>
+			<div>
+				<label for="postal_code">Entrez un code postal:
+				</label>
+				<input type="text" name="postal_code" id="postal_code" value="{{ codePostal }}">
+			</div>
+			<div>
+				<label for="type">Entrez un type d'etablissement:
+				</label>
+				<select name="type">
+					<option value="accompagnement_personnes_agees">accompagnement_personnes_agees</option>
+					<option value="adil">adil</option>
+					<option value="afpa">afpa</option>
+					<option value="anah">anah</option>
+					<option value="apec">apec</option>
+					<option value="apecita">apecita</option>
+					<option value="ars">ars</option>
+					<option value="ars_antenne">ars_antenne</option>
+					<option value="banque_de_france">banque_de_france</option>
+					<option value="bav">bav</option>
+					<option value="bsn">bsn</option>
+					<option value="caa">caa</option>
+					<option value="caf">caf</option>
+					<option value="carsat">carsat</option>
+					<option value="ccas">ccas</option>
+					<option value="cci">cci</option>
+					<option value="cdas">cdas</option>
+					<option value="cddp">cddp</option>
+					<option value="cdg">cdg</option>
+					<option value="centre_detention">centre_detention</option>
+					<option value="centre_impots_fonciers">centre_impots_fonciers</option>
+					<option value="centre_penitentiaire">centre_penitentiaire</option>
+					<option value="centre_social">centre_social</option>
+					<option value="cesr">cesr</option>
+					<option value="cg">cg</option>
+					<option value="chambre_agriculture">chambre_agriculture</option>
+					<option value="chambre_metier">chambre_metier</option>
+					<option value="cicas">cicas</option>
+					<option value="cidf">cidf</option>
+					<option value="cij">cij</option>
+					<option value="cio">cio</option>
+					<option value="civi">civi</option>
+					<option value="clic">clic</option>
+					<option value="cnfpt">cnfpt</option>
+					<option value="cnra">cnra</option>
+					<option value="commissariat_police">commissariat_police</option>
+					<option value="commission_conciliation">commission_conciliation</option>
+					<option value="conciliateur_fiscal">conciliateur_fiscal</option>
+					<option value="conseil_culture">conseil_culture</option>
+					<option value="cour_appel">cour_appel</option>
+					<option value="cpam">cpam</option>
+					<option value="cr">cr</option>
+					<option value="crc">crc</option>
+					<option value="crdp">crdp</option>
+					<option value="creps">creps</option>
+					<option value="crfpn">crfpn</option>
+					<option value="crib">crib</option>
+					<option value="crous">crous</option>
+					<option value="csl">csl</option>
+					<option value="dac">dac</option>
+					<option value="dd_femmes">dd_femmes</option>
+					<option value="dd_fip">dd_fip</option>
+					<option value="ddcs">ddcs</option>
+					<option value="ddcspp">ddcspp</option>
+					<option value="ddpjj">ddpjj</option>
+					<option value="ddpp">ddpp</option>
+					<option value="ddsp">ddsp</option>
+					<option value="ddt">ddt</option>
+					<option value="defenseur_droits">defenseur_droits</option>
+					<option value="did_routes">did_routes</option>
+					<option value="dir_mer">dir_mer</option>
+					<option value="dir_meteo">dir_meteo</option>
+					<option value="dir_pj">dir_pj</option>
+					<option value="direccte">direccte</option>
+					<option value="direccte_ut">direccte_ut</option>
+					<option value="dml">dml</option>
+					<option value="dr_femmes">dr_femmes</option>
+					<option value="dr_fip">dr_fip</option>
+					<option value="dr_insee">dr_insee</option>
+					<option value="drac">drac</option>
+					<option value="draf">draf</option>
+					<option value="drddi">drddi</option>
+					<option value="dreal">dreal</option>
+					<option value="dreal_ut">dreal_ut</option>
+					<option value="driea">driea</option>
+					<option value="driea_ut">driea_ut</option>
+					<option value="driee">driee</option>
+					<option value="driee_ut">driee_ut</option>
+					<option value="drihl">drihl</option>
+					<option value="drihl_ut">drihl_ut</option>
+					<option value="drjscs">drjscs</option>
+					<option value="dronisep">dronisep</option>
+					<option value="drpjj">drpjj</option>
+					<option value="drrt">drrt</option>
+					<option value="drsp">drsp</option>
+					<option value="dz_paf">dz_paf</option>
+					<option value="edas">edas</option>
+					<option value="epci">epci</option>
+					<option value="esm">esm</option>
+					<option value="fdapp">fdapp</option>
+					<option value="fdc">fdc</option>
+					<option value="fongecif">fongecif</option>
+					<option value="gendarmerie">gendarmerie</option>
+					<option value="greta">greta</option>
+					<option value="hypotheque">hypotheque</option>
+					<option value="inspection_academique">inspection_academique</option>
+					<option value="maia">maia</option>
+					<option value="mairie">mairie</option>
+					<option value="mairie_com">mairie_com</option>
+					<option value="mairie_mobile">mairie_mobile</option>
+					<option value="maison_arret">maison_arret</option>
+					<option value="maison_centrale">maison_centrale</option>
+					<option value="maison_handicapees">maison_handicapees</option>
+					<option value="mds">mds</option>
+					<option value="mission_locale">mission_locale</option>
+					<option value="mjd">mjd</option>
+					<option value="msa">msa</option>
+					<option value="ofii">ofii</option>
+					<option value="onac">onac</option>
+					<option value="onf">onf</option>
+					<option value="paris_mairie">paris_mairie</option>
+					<option value="paris_mairie_arrondissement">paris_mairie_arrondissement</option>
+					<option value="paris_ppp">paris_ppp</option>
+					<option value="paris_ppp_antenne">paris_ppp_antenne</option>
+					<option value="paris_ppp_certificat_immatriculation">paris_ppp_certificat_immatriculation</option>
+					<option value="paris_ppp_gesvres">paris_ppp_gesvres</option>
+					<option value="paris_ppp_permis_conduire">paris_ppp_permis_conduire</option>
+					<option value="permanence_juridique">permanence_juridique</option>
+					<option value="pif">pif</option>
+					<option value="pmi">pmi</option>
+					<option value="pole_emploi">pole_emploi</option>
+					<option value="pp_marseille">pp_marseille</option>
+					<option value="prefecture">prefecture</option>
+					<option value="prefecture_greffe_associations">prefecture_greffe_associations</option>
+					<option value="prefecture_region">prefecture_region</option>
+					<option value="prudhommes">prudhommes</option>
+					<option value="rectorat">rectorat</option>
+					<option value="sdac">sdac</option>
+					<option value="sdsei">sdsei</option>
+					<option value="service_navigation">service_navigation</option>
+					<option value="sgami">sgami</option>
+					<option value="sie">sie</option>
+					<option value="sip">sip</option>
+					<option value="sous_pref">sous_pref</option>
+					<option value="spip">spip</option>
+					<option value="suio">suio</option>
+					<option value="ta">ta</option>
+					<option value="te">te</option>
+					<option value="tgi">tgi</option>
+					<option value="ti">ti</option>
+					<option value="tresorerie">tresorerie</option>
+					<option value="tribunal_commerce">tribunal_commerce</option>
+					<option value="urssaf">urssaf</option>
+				</select>
+			</div>
+			<div>
+				<input type="submit" value="Recherche">
+			</div>
+		</form>
+		<p>{{ error }}</p>
+		{% for city in citys %}
+			<ul>
+				<li>{{ city['nom'] }}
+					dans le
+					{{ city['codesPostaux'][0] }}</li>
+				<p>Population:
+					{{ city['population'] }}</p>
+				<p>Etablissement:</p>
+				{% for etablissement in city['etablissement']['features'] %}
+					{% if etablissement != [] %}
+						<ul>
+							<hr>
+							<li>{{ etablissement["properties"]["nom"] }}</li>
+							{% if etablissement["properties"]["adresses"] is defined %}
+								<li>adresse:
+									{{ etablissement["properties"]["adresses"][0]["lignes"][0] }},{{ etablissement["properties"]["adresses"][0]["codePostal"] }}
+									{{ etablissement["properties"]["adresses"][0]["commune"] }}</li>
+							{% endif %}
+							{% if etablissement["properties"]["telephone"] is defined %}
+								<li>telephone:
+									{{ etablissement["properties"]["telephone"] }}</li>
+							{% endif %}
+							{% if etablissement["properties"]["email"] is defined %}
+								<li>Mail:
+									{{ etablissement["properties"]["email"] }}</li>
+							{% endif %}
+							{% if etablissement["properties"]["url"] is defined %}
+								<li>Site:
+									<a href="{{ etablissement["properties"]["url"] }}">{{ etablissement["properties"]["url"] }}</a>
+								</li>
+							{% endif %}
+						</ul>
+					{% else %}
+						<p>Aucun etablissement trouvé.</p>
+					{%  endif %}
+				{% endfor %}
+			</ul>
+		{% endfor %}
+	</body>
+</html>
