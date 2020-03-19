@@ -3,24 +3,24 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>
-			{% block title %}Bienvenue !
+			{% block title %}Trouver votre établissement publique !
 			{% endblock %}
 		</title>
 	</head>
 	<body>
 		<form action="/" method="get">
 			<div>
-				<label for="city">Entrez un nom de ville:
+				<label for="city">Ville :
 				</label>
 				<input type="text" name="city" id="city" value="{{ ville }}">
 			</div>
 			<div>
-				<label for="postal_code">Entrez un code postal:
+				<label for="postal_code">Code postal :
 				</label>
 				<input type="text" name="postal_code" id="postal_code" value="{{ codePostal }}">
 			</div>
 			<div>
-				<label for="type">Entrez un type d'établissement:
+				<label for="type">Type d'établissement publique:
 				</label>
 				<select name="type">
 					<option value="accompagnement_personnes_agees">accompagnement_personnes_agees</option>
