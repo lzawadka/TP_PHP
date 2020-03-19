@@ -18,8 +18,7 @@ class EtablissementPublicApi {
       echo strval('Error: Status Code: ' . $response->getStatusCode());
     } else {
       $content = $response->getContent();
-      $responseApi = JsonResponse::fromJsonString($content);
-      return $responseApi;
+      return json_decode($content);
     }
   }
 }

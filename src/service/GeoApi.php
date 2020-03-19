@@ -3,14 +3,15 @@ namespace App\Service;
 
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class GeoApi {
   
   public function getCommunes($postalCode, $commune) : array 
   {
     $httpClient = HttpClient::create();
-    if($cityName && $commune) {
-        $response = $httpClient->request('GET', "https://geo.api.gouv.fr/communes?codePostal=" . $postalcode . "&nom=" . $cityName . "&fields=nom,code,codesPostaux,codeDepartement,codeRegion,population&format=json&geometry=centre");
+    if($postalCode && $commune) {
+        $response = $httpClient->request('GET', "https://geo.api.gouv.fr/communes?codePostal=" . $postalCode . "&nom=" . $commune . "&fields=nom,code,codesPostaux,codeDepartement,codeRegion,population&format=json&geometry=centre");
     }
       
 
@@ -20,8 +21,7 @@ class GeoApi {
       echo strval('Error: Status Code: ' . $response->getStatusCode());
     } else {
       $content = $response->getContent();
-      $responseApi = JsonResponse::fromJsonString($content);
-      return $responseApi;
+      return json_decode($content);
     }
   }
 }

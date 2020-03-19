@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Service\EtablissementPublicApi;
 use App\Service\GeoApi;
@@ -10,17 +11,17 @@ class HomeController extends AbstractController
 {
   /**
      * @Route("/", name="index")
-     * @param GeoApi $geoAPi
+     * @param GeoApi $geoApi
      * @param EtablissementPublicApi $etablissementPublicApi
      */
-    public function getEtablissementGeo(GeoAPi $geoAPi, EtablissementPublicApi $etablissementPublicApi)
+    public function getEtablissementGeo(GeoApi $geoApi, EtablissementPublicApi $etablissementPublicApi)
     {
         $returnCity = [];
         $error = "";
         if($_GET != []){
             $city= $_GET["city"];
             $postalCode= $_GET["postal_code"];
-            $citys = $geoAPi->getCommunes($city,$postalCode);
+            $citys = $geoApi->getCommunes($postalCode, $city);
             foreach ($citys as $city) {
                 $etablissements = $etablissementPublicApi->getEtablissement($city['code'], $_GET["type"]);
                 if($etablissements != null){
