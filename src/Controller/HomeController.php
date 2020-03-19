@@ -4,13 +4,13 @@ namespace App\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Service\EtablissementPublicApi;
-use App\Service\GeoAPi;
+use App\Service\GeoApi;
 
 class HomeController extends AbstractController 
 {
   /**
      * @Route("/", name="index")
-     * @param GeoAPi $geoAPi
+     * @param GeoApi $geoAPi
      * @param EtablissementPublicApi $etablissementPublicApi
      */
     public function getEtablissementGeo(GeoAPi $geoAPi, EtablissementPublicApi $etablissementPublicApi)
@@ -20,32 +20,32 @@ class HomeController extends AbstractController
         if($_GET != []){
             $city= $_GET["city"];
             $postalCode= $_GET["postal_code"];
-            $communes = $geoAPi->getCommunes($city,$postalCode);
-            foreach ($communes as $commune) {
-                $etablissements = $etablissementPublicApi->getEtablissement($commune['code'], $_GET["type"]);
+            $citys = $geoAPi->getCommunes($city,$postalCode);
+            foreach ($citys as $city) {
+                $etablissements = $etablissementPublicApi->getEtablissement($city['code'], $_GET["type"]);
                 if($etablissements != null){
-                    $commune["etablissement"] = $etablissements;
+                    $city["etablissement"] = $etablissements;
                 }
-                array_push($returnCommune,$commune);
+                array_push($returnCity,$city);
             }
-            if(array_key_exists("error", $communes)){
-                $error = $communes["error"];
+            if(array_key_exists("error", $citys)){
+                $error = $citys["error"];
             }
             else if(array_key_exists("error", $etablissements)){
                 $error = $etablissements["error"];
             }
-            else if($communes == []){
-                $error = "Aucune ville n'a été trouvé.";
+            else if($citys == []){
+                $error = "Aucune ville trouvé.";
             }
             return $this->render('base.html.twig', [
-                'citys' => $returnCommune,
+                'citys' => $returnCity,
                 'error' => $error,
                 'ville' => $_GET["city"],
                 'codePostal' => $_GET["postal_code"],
             ]);
         }
         return $this->render('base.html.twig', [
-            'citys' => $returnCommune,
+            'citys' => $returnCity,
             'ville' => "",
             'codePostal' => "",
             'error' => $error,
